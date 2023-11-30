@@ -1,0 +1,91 @@
+﻿<Window x:Class="PROG2500_A2_Chinook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG2500_A2_Chinook"
+        mc:Ignorable="d"
+        Title="Chinook Music Store" Height="450" Width="800" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <BitmapImage x:Key="home" UriSource="/Images/home.png"></BitmapImage>
+            <BitmapImage x:Key="artist" UriSource="/Images/artist.png"></BitmapImage>
+            <BitmapImage x:Key="album" UriSource="/Images/album.png"></BitmapImage>
+			<BitmapImage x:Key="track" UriSource="/Images/track.png"></BitmapImage>
+			<BitmapImage x:Key="catalog" UriSource="/Images/catalog.png"></BitmapImage>
+            <BitmapImage x:Key="orders" UriSource="/Images/orders.png"></BitmapImage>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="_Exit" Click="Exit"/>
+            </MenuItem>
+            <MenuItem Header="_Pages">
+                <MenuItem x:Name="Home" Header="_Home" Click="Home_Click">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource home}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="ViewAlbums" Header="_View Albums" Click="ViewAlbums_Click">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource album}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="ViewArtists" Header="_View Artists" Click="ViewArtists_Click">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource artist}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+				<MenuItem x:Name="ViewTracks" Header="_View Tracks" Click="ViewTracks_Click">
+					<MenuItem.Icon>
+						<Image Source="{StaticResource track}"></Image>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem x:Name="ViewCatalog" Header="_View Catalog" Click="ViewCatalog_Click">
+					<MenuItem.Icon>
+						<Image Source="{StaticResource catalog}"></Image>
+					</MenuItem.Icon>
+				</MenuItem>
+                <MenuItem x:Name="ViewOrders" Header="_View Orders" Click="ViewOrders_Click">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource orders}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <ToolBar DockPanel.Dock="Left">
+            <StackPanel Orientation="Vertical" Width="50">
+                <Button x:Name="HomeButton" Click="Home_Click" ToolTip="Go to Home Page">
+                    <Image Source="{StaticResource home}"></Image>
+                </Button>
+                <Button x:Name="AlbumsButton" Click="ViewAlbums_Click" ToolTip="Go to Albums Page">
+                    <Image Source="{StaticResource album}"></Image>
+                </Button>
+                <Button x:Name="ArtistsButton" Click="ViewArtists_Click" ToolTip="Go to Artists Page">
+                    <Image Source="{StaticResource artist}"></Image>
+                </Button>
+                <Button x:Name="TracksButton" Click="ViewTracks_Click" ToolTip="Go to Tracks Page">
+					<Image Source="{StaticResource track}"></Image>
+				</Button>
+                <Button x:Name="CatalogButton" Click="ViewCatalog_Click" ToolTip="Go to Catalog Page">
+                    <Image Source="{StaticResource catalog}"></Image>
+                </Button>
+                <Button x:Name="OrdersButton" Click="ViewOrders_Click" ToolTip="Go to Orders Page">
+                    <Image Source="{StaticResource orders}"></Image>
+                </Button>
+            </StackPanel>
+        </ToolBar>
+        <Frame x:Name="mainFrame" Height="Auto" Width="Auto" NavigationUIVisibility="Hidden"
+           DockPanel.Dock="Bottom">
+        </Frame>
+    </DockPanel>
+
+	<!-- References for icon images
+    UIcons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/files-and-folders" title="files and folders icons">Files and folders icons created by kliwir art - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/order" title="order icons">Order icons created by SBTS2018 - Flaticon</a>
+    -->
+</Window>

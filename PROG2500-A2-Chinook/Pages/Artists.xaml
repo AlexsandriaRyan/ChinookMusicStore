@@ -1,0 +1,70 @@
+﻿<Page x:Class="PROG2500_A2_Chinook.Pages.Artists"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PROG2500_A2_Chinook.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Artists">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="artistViewSource"/>
+
+        <Style x:Key="ArtistGrid" TargetType="Grid">
+            <Setter Property="Background" Value="LightBlue"/>
+        </Style>
+
+        <Style x:Key="ArtistHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontWeight"  Value="Bold"/>
+            <Setter Property="Padding" Value="0,0,0,10"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Foreground" Value="SteelBlue"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Style="{StaticResource ArtistGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Style="{StaticResource ArtistHeader}"
+            Text="ARTISTS PAGE"
+            Grid.Row="0"/>
+        
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Grid.Row="1">
+            
+            <Label Content="Search Artists:"/>
+            <TextBox x:Name="artistSearch" Width="300"/>
+            <Button x:Name="btnArtistSearch"
+                    Content="Search"
+                    Click="btnArtistSearch_Click"
+                    Width="75"/>
+        </StackPanel>
+
+        <ListView x:Name="ArtistListView"
+                  ItemsSource="{Binding Source={StaticResource artistViewSource}}"
+                  Grid.Row="2">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="local:Artists">
+                    <Grid Height="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding ArtistId}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Name}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
