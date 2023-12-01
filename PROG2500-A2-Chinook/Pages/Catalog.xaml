@@ -52,6 +52,83 @@
                   ItemsSource="{Binding Source={StaticResource catalogViewSource}}"
                   Grid.Row="2">
 
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding Index}"
+                                   Grid.Column="0"/>
+
+                        <TextBlock Text="{Binding artistCount, StringFormat='# of Results: {0}'}"
+                                   Grid.Column="1"/>
+
+                        <Expander Header="View Artists"
+                                  Grid.Column="2">
+                            
+                            <ListView ItemsSource="{Binding artist}"
+                                      MaxHeight="300"
+                                      Width="500">
+                                
+                                <ListView.ItemTemplate>
+                                    <DataTemplate DataType="local.Artists">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="{Binding Name}"
+                                                       Margin="0,0,10,0"
+                                                       Grid.Column="0"/>
+
+                                            <Expander Header="View Albums"
+                                                      HorizontalAlignment="Right"
+                                                      Grid.Column="1">
+                                                
+                                                <ListView ItemsSource="{Binding Albums}">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate DataType="local.Albums">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Text="{Binding Title}"
+                                                                           Margin="0,0,10,0"
+                                                                           Grid.Column="0"/>
+
+                                                                <Expander Header="View Tracks"
+                                                                          Grid.Column="1">
+                                                                    
+                                                                    <ListView ItemsSource="{Binding Tracks}">
+                                                                        <ListView.ItemTemplate>
+                                                                            <DataTemplate DataType="local.Tracks">
+                                                                                <Grid>
+                                                                                    <TextBlock Text="{Binding Name}"/>
+                                                                                </Grid>
+                                                                            </DataTemplate>
+                                                                        </ListView.ItemTemplate>
+                                                                    </ListView>
+                                                                </Expander>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                            </Expander>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Expander>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

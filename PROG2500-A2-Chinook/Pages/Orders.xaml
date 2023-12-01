@@ -51,6 +51,55 @@
         <ListView x:Name="OrderListView"
                   ItemsSource="{Binding Source={StaticResource ordersViewSource}}"
                   Grid.Row="2">
+
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="local:Customers">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="175"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Vertical"
+                                    Margin="0,0,0,10"
+                                    Grid.Column="0">
+                            
+                            <TextBlock Text="{Binding FullName}"/>
+                            <TextBlock Text="{Binding CityState}"/>
+                            <TextBlock Text="{Binding Country}"/>
+                            <TextBlock Text="{Binding Email}"/>
+                        </StackPanel>
+
+                        <Expander Header="View Invoices"
+                                  Grid.Column="1">
+
+                            <ListView ItemsSource="{Binding Invoices}"
+                                      MaxHeight="300"
+                                      Width="500">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate DataType="local.Invoices">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="250"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="{Binding InvoiceDate, StringFormat='Order Date: {0}'}"
+                                                   Grid.Column="0"/>
+                                            <TextBlock Text="{Binding Total, StringFormat='Total: ${0}'}"
+                                                       Grid.Column="1"/>
+                                            <TextBlock Text="{Binding OrderQuantity, StringFormat='Quantity: {0}'}"
+                                                       Grid.Column="2"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Expander>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

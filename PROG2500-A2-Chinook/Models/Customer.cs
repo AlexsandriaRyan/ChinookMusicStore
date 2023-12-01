@@ -9,7 +9,7 @@ namespace PROG2500_A2_Chinook.Models
 {
     public partial class Customer
     {
-        public string? FullName
+        public string FullName
         {
             get
             {
@@ -21,7 +21,7 @@ namespace PROG2500_A2_Chinook.Models
         {
             get
             {
-                return String.IsNullOrEmpty(this.State) ? "N/A" : this.City + ", " + this.State;
+                return String.IsNullOrEmpty(this.State) ? this.City : this.City + ", " + this.State;
             }
         }
 

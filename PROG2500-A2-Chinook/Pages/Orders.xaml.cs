@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROG2500_A2_Chinook.Data;
+using PROG2500_A2_Chinook.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,8 @@ namespace PROG2500_A2_Chinook.Pages
             //Set the viewsource data source to use the album data collection
             ordersViewSource.Source = _context.Customers.Local.ToObservableCollection();
             ordersViewSource.Source = _context.Invoices.Local.ToObservableCollection();
+
+            OrderListView.ItemsSource = _context.Customers.Local.ToObservableCollection();
         }
 
         private void btnOrderSearch_Click(object sender, RoutedEventArgs e)
@@ -43,17 +46,8 @@ namespace PROG2500_A2_Chinook.Pages
             string searchTerm = orderSearch.Text;
 
             // linq query expression
-            var query =
-                from customer in _context.Customers
-                where customer.FullName.Contains(searchTerm)
-                select customer;
-
-            OrderListView.Items.Clear();
-
-            foreach (var customer in query)
-            {
-                OrderListView.Items.Add(customer);
-            }
+            var query = _context.Customers.Where(customer => customer.FullName.Contains(searchTerm)).ToList();
+            OrderListView.ItemsSource = query;
         }
     }
 }
