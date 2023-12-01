@@ -6,13 +6,13 @@
       xmlns:local="clr-namespace:PROG2500_A2_Chinook.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Orders">
+      Title="Orders" Background="Black">
 
     <Page.Resources>
         <CollectionViewSource x:Key="ordersViewSource"/>
 
         <Style x:Key="OrdersGrid" TargetType="Grid">
-            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Background" Value="#FFCDEDBF"/>
         </Style>
 
         <Style x:Key="OrdersHeader" TargetType="TextBlock">
@@ -21,7 +21,7 @@
             <Setter Property="Padding" Value="0,0,0,10"/>
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Foreground" Value="SteelBlue"/>
+            <Setter Property="Foreground" Value="YellowGreen"/>
         </Style>
     </Page.Resources>
 
@@ -90,7 +90,7 @@
                                                    Grid.Column="0"/>
                                             <TextBlock Text="{Binding Total, StringFormat='Total: ${0}'}"
                                                        Grid.Column="1"/>
-                                            <TextBlock Text="{Binding OrderQuantity, StringFormat='Quantity: {0}'}"
+                                            <TextBlock Text="{Binding NumOfItems, StringFormat='Quantity: {0}'}"
                                                        Grid.Column="2"/>
                                         </Grid>
                                     </DataTemplate>

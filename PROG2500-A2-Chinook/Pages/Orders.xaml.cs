@@ -33,10 +33,12 @@ namespace PROG2500_A2_Chinook.Pages
             //Use the dbContext to tell EF to load the data we'll use on this page
             _context.Customers.Load();
             _context.Invoices.Load();
+            _context.InvoiceLines.Load();
 
             //Set the viewsource data source to use the album data collection
             ordersViewSource.Source = _context.Customers.Local.ToObservableCollection();
             ordersViewSource.Source = _context.Invoices.Local.ToObservableCollection();
+            ordersViewSource.Source = _context.InvoiceLines.Local.ToObservableCollection();
 
             OrderListView.ItemsSource = _context.Customers.Local.ToObservableCollection();
         }
@@ -46,8 +48,13 @@ namespace PROG2500_A2_Chinook.Pages
             string searchTerm = orderSearch.Text;
 
             // linq query expression
-            var query = _context.Customers.Where(customer => customer.FullName.Contains(searchTerm)).ToList();
-            OrderListView.ItemsSource = query;
+            var query =
+                from customer in _context.Customers
+                where customer.FirstName.Contains(searchTerm) ||
+                customer.LastName.Contains(searchTerm)
+                select customer;
+
+            OrderListView.ItemsSource = query.ToList();
         }
     }
 }

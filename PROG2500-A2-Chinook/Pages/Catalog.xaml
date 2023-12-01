@@ -12,7 +12,7 @@
         <CollectionViewSource x:Key="catalogViewSource"/>
 
         <Style x:Key="CatalogGrid" TargetType="Grid">
-            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Background" Value="LemonChiffon"/>
         </Style>
 
         <Style x:Key="CatalogHeader" TargetType="TextBlock">
@@ -21,7 +21,7 @@
             <Setter Property="Padding" Value="0,0,0,10"/>
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Foreground" Value="SteelBlue"/>
+            <Setter Property="Foreground" Value="Gold"/>
         </Style>
     </Page.Resources>
 
