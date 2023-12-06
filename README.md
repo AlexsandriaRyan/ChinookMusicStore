@@ -1,9 +1,9 @@
-#Chinook Music Store
+# Chinook Music Store
 Alexsandria Ryan
 PROG2500
 November 2023
 
-##Goal: 
+## Goal: 
 - Use Entity Framework to create models and data
 - Use partial classes
 - Create pages
